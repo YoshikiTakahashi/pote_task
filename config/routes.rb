@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  get 'landing_page/home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :posts
+  get 'welcome/index'
+  root 'landing_page#home'
+
 end

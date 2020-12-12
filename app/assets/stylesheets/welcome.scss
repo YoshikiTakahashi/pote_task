@@ -1,0 +1,83 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.flame {
+  border: 2px solid #000;
+  width: 900px !important;
+  // padding: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.content-block {
+  // background-color: red;
+  width: 95%;
+  // height: 70%;
+  padding: 20px;
+  border: 2px solid #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.space-between {
+  justify-content: space-between;
+
+}
+.name {
+  margin: 10px 20px 20px 20px;
+  padding: 0px;
+  font-size: 20px;
+}
+
+.image-user {
+  // background-color: royalblue;
+  border: 2px solid #000;
+  height: 100px;
+  width: 100px;
+}
+
+
+.container {
+  padding: 30px;
+  height: 90%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .up-image {
+    // background-color: salmon;
+    border: 2px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+    height: 90%;
+    width: 90%;
+    font-size: 70px;
+  }
+  .text p {
+    margin-top: 20px;
+    padding: 0px;
+    width: 80%;
+    border: 2px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.action-menu {
+  
+  .like {
+    background-color: sandybrown;
+    width: 30px;
+    height: 30px;
+  }
+  .comment {
+    background-color: indigo;
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+  }
+}
