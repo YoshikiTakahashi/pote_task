@@ -1,14 +1,40 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  #アカウント登録後のリダイレクト先
-  def after_sign_up_path_for(resource)
-    welcome_index_path
+  def new
+    super
   end
 
+  # POST /resource
+  def create
+    super do                                            
+      resource.update(confirmed_at: Time .now.utc)
+    end
+  end
 
-  #アカウント編集後のリダイレクト先
-# def after_update_path_for(resource)
-#   リダイレクト先のパス
-# end
+  # GET /resource/edit
+  def edit
+    super
+  end
+
+  # PUT /resource
+  def update
+    super
+  end
+
+  # DELETE /resource
+  def destroy
+    super
+  end
+
+  # GET /resource/cancel
+  # Forces the session data which is usually expired after sign
+  # in to be expired now. This is useful if the user wants to
+  # cancel oauth signing in/up in the middle of the process,
+  # removing all OAuth session data.
+  # def cancel
+  #   super
+  # end
+
+  protected
 end

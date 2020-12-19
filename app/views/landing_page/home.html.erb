@@ -8,7 +8,6 @@
 
 <%# <div id="user-info"> %>
   <% if user_signed_in? %>
-    <%= current_user.name %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primary" %>
   <% else %>
     <%= link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class: "btn btn-lg btn-primary" %>
