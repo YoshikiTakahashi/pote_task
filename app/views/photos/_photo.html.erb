@@ -1,0 +1,20 @@
+<li id="photo-<%= photo.id %>" class="col6 col-md-4 img-thumbnail text-left">
+  <span class="picture center">
+    <%= image_tag photo.picture.url if photo.picture? %>
+  </span>
+
+  <span class="title">
+    <%= link_to "タイトル：#{photo.title}", photo %><br>
+    <%= link_to "投稿者：#{photo.user.user_name}", user_path(photo.user) %>
+  </span>
+
+  <span class="timestamp">
+    投稿時間 <%= time_ago_in_words(photo.created_at) %> ago.
+    <% if current_user == photo.user %>
+      <%= link_to "delete", photo, method: :delete,
+          data: { confirm: "本当に削除しますか?" } %>
+    <% else %>
+      <%= render 'users/like_form'%>
+    <% end %>
+  </span>
+</li>

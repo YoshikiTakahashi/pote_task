@@ -7,14 +7,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do                                            
-      resource.update(confirmed_at: Time .now.utc)
-    end
+    super
   end
 
   # GET /resource/edit
   def edit
     super
+    # render "users/registrations/pasaword", locals: {user: current_user }
   end
 
   # PUT /resource
@@ -37,4 +36,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def after_update_path_for(resource)
+    user_path(@user.id)
+  end
 end

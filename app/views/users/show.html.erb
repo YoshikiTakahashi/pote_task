@@ -2,10 +2,11 @@
 
     <div class="user-about flex">
       <div class="image-user">
-        マイ画像
+        <%= gravatar_for @user %>
       </div>
       <div class="name">
-        <p>name</p>
+        <p>ユーザーネーム<%= @user.user_name %></p><br>
+        <p>ニックネーム<%= @user.pen_name %></p>
 
 
       </div>
@@ -22,10 +23,8 @@
 
 
 <p>自己紹介</p> 
-
+<%= @user.introduction %>
 <p>投稿した写真が３列で表示</p>
 
 
 <p>↑写真クリックでモーダルで写真とコメントが表示</p>
-
-
