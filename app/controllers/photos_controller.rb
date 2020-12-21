@@ -1,8 +1,15 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
-  before_action :correct_user, only: [:destroy]
+  before_action :authenticate_user!, only: [:new, :index, :show, :create, :destroy]
+  before_action :correct_user, only: :destroy
+  # before_action :logged_in_user, only: [:new, :index, :show, :create, :destroy]
+  def new
+    @photo = current_user.photos.build
+    @feed_items = current_user.feed.paginate(page: params[:page])
+  end
+
   def index
-    @photos = Photo.all.order(created_at: :desc)
+    show_result = search_result ||= Photo.all
+    @feed_items = show_result.paginate(page: params[:page])
   end
 
   def show
@@ -12,28 +19,29 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.build(photo_params)
+    @photo.image.attach(params[:photo][:image])
     if @photo.save
       flash[:success] = "Posted Photo!"
       redirect_to @photo
     else
+      @feed_items = current_user.feed.paginate(page: params[:page])
       flash[:danger] = "Failed post Photo."
-      @feed_items = []
-      redirect_to root_path
+      redirect_to @photo
     end
   end
 
   def destroy
-    if @photo.destroy(photo_params)
-      redirect_to root_path, notice: "投稿を削除しました"
+    if @photo.destroy
+      redirect_to photos_path, notice: "投稿を削除しました"
     else 
-      redirect_to root_path, alert: "投稿を削除できませんでした"
+      redirect_to photos_path, alert: "投稿を削除できませんでした"
     end
   end
   
   private
 
   def photo_params
-    params.require(:photo).permit(:picture, :title)
+    params.require(:photo).permit(:image, :title)
   end
 
   def correct_user

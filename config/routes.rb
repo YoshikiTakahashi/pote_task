@@ -14,10 +14,9 @@ Rails.application.routes.draw do
     # match 'sign_out',       to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
   # end
 
-  resources :users, only: [:show] do
-  end
+  resources :users, only: [:show, :edit, :update, :destroy] 
 
-  resources :photos, only: [:index, :show, :create, :destroy]
+  resources :photos, only: [:new, :index, :show, :create, :destroy]
 
   root 'landing_page#home'
 

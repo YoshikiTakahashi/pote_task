@@ -1,4 +1,5 @@
 class LandingPageController < ApplicationController
-  def home
+  def home 
+    user_signed_in?
   end
 end

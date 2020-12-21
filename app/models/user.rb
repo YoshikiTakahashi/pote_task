@@ -4,8 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook]
+  has_many :photos, dependent: :destroy
 
-
+  before_save { self.email = email.downcase }
+  validates :user_name, presence: true, length: { in: 3..50}
+  validates :pen_name, presence: true, length: { in: 3..50}
+  validates :email, uniqueness: { case_sensitive: false }
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -17,4 +22,8 @@ class User < ApplicationRecord
     end
   end
 
+
+  def feed
+    Photo.where("user_id = ?", id)
+  end
 end

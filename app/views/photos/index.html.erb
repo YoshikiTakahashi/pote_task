@@ -1,41 +1,5 @@
-<% provide(:title, "投稿写真一覧") %>
-<div class="flame container">
-  <% @photos.each do |photo| %>
-    <div class="content-block">
-      <div class="flex space-between">
-        <div class="user-about flex">
-          <div class="image-user">
-            マイ画像
-          </div>
-          <div class="name">
-            高橋祥樹
-          </div>
-        </div>
-
-        <div class="action-menu flex">
-          <div class="like"> 
-            good
-          </div>
-          <div class="comment">
-            いいね
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="up-image">
-          <%= photo.content %>
-        </div>
-
-          <% if post.images.attached? %>
-        <div class="up-image">
-          <% post.images.each do |image| %>
-            <%= image_tag image %>
-          <% end %>
-        </div>
-          <% end %>
-
-      </div>
-    </div>
-  <% end %>
+<% provide(:title, "投稿画像一覧") %>
+<div class="col-md-8">
+  <h3>投稿画像一覧</h3>
+  <%= render 'shared/feed' %>
 </div>

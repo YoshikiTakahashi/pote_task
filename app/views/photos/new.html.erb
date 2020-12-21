@@ -1,7 +1,8 @@
-<div>
-  <%= form_with model: @photo, local: true do |f| %>
-    <%= f.text_area :content %><br>
-    <%= f.file_field :images, multiple: true %><br>
-    <%= f.submit %>
-  <% end %>
+<% provide(:title, "アップロード") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="photo_form">
+      <%= render 'shared/photo_form' %>
+    </section>
+  </aside>
 </div>
