@@ -1,4 +1,5 @@
 <% if @feed_items.any? %>
+<p>表示件数「<%= @feed_items.count %>件」</p>
   <ol class="photos">
     <%= render @feed_items %>
   </ol>

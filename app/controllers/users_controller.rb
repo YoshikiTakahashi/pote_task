@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  # before_action :logged_in_user, only: [:show, :edit, :create, :destroy]
+  before_action :authenticate_user!
+
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
   def show
     @user = User.find(params[:id])
     @photos = @user.photos.paginate(page: params[:page])
@@ -9,6 +14,20 @@ class UsersController < ApplicationController
   def edit 
     @user = current_user 
   end 
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
   private
   def user_params

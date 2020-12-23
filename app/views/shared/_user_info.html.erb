@@ -1,22 +1,21 @@
-
   <div>
     <%= link_to gravatar_for(@user, size: 100) %>
     <div class="name">
     <p><%= @user.user_name %></p><br>
     <p><%= @user.pen_name %></p>
   </div>
-   </div>     
-
+</div>     
+  <section class="stats">
+    <%= render 'shared/stats' %>
+    <div class="col-md-8">
+      <%= render 'follow_form' if logged_in? %>
+    </div>
+  </section>
 
 <div>
-    <%= link_to_if(current_user == @user, "プロフィール編集", edit_user_registration_path){} %>
-
-<p>これまでに登録した写真の件数</p>
-<h3>投稿写真：<%= @user.photos.count %>枚</h3>
-<p>フォロワー数</p>
-
-<p>フォローしているユーザー数</p>
-
-<h3>自己紹介：<%= @user.introduction %></h3>
-<h3>Webサイト：<%= @user.website %></h3>
+  <h3>これまでに登録した写真の件数</h3>
+  <h3>投稿写真：<%= @user.photos.count %>枚</h3>
+  <h3>自己紹介：<%= @user.introduction %></h3>
+  <h3>Webサイト：<%= @user.website %></h3>
+      <%= link_to_if(current_user == @user, "プロフィール編集", edit_user_registration_path){} %>
 </div>

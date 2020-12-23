@@ -1,7 +1,5 @@
-<% provide(:title, current_user.user_name) %>
+<% provide(:title, @user.user_name) %>
   <%= render 'shared/user_info' %>
-<p>投稿した写真が３列で表示</p>
-
 
   <div class="col-md-8">
     <% if @user.photos.any? %>

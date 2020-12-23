@@ -1,15 +1,18 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :index, :show, :create, :destroy]
-  before_action :correct_user, only: :destroy
-  # before_action :logged_in_user, only: [:new, :index, :show, :create, :destroy]
+  before_action :correct_user, only: [:destroy]
+  
   def new
     @photo = current_user.photos.build
     @feed_items = current_user.feed.paginate(page: params[:page])
   end
 
   def index
-    show_result = search_result ||= Photo.all
-    @feed_items = show_result.paginate(page: params[:page])
+    following_photo = Photo.where("user_id IN (?)", current_user.following_ids)
+    @feed_items = following_photo.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(page: params[:page])
+    # show_result = search_result ||= Photo.all
+    # @feed_items = show_result.paginate(page: params[:page])
   end
 
   def show
