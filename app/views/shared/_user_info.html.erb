@@ -1,21 +1,24 @@
-  <div>
-    <%= link_to gravatar_for(@user, size: 100) %>
-    <div class="name">
-    <p><%= @user.user_name %></p><br>
-    <p><%= @user.pen_name %></p>
-  </div>
-</div>     
-  <section class="stats">
-    <%= render 'shared/stats' %>
-    <div class="col-md-8">
-      <%= render 'follow_form' if logged_in? %>
+  <aside class="col-2 col-md-3">
+    <%= link_to gravatar_for(@user, size: 180) %>
+  </aside>
+    <div class="name name-margin">
+      <p>フルネーム：<%= @user.user_name %></p>
     </div>
-  </section>
-
-<div>
-  <h3>これまでに登録した写真の件数</h3>
-  <h3>投稿写真：<%= @user.photos.count %>枚</h3>
-  <h3>自己紹介：<%= @user.introduction %></h3>
-  <h3>Webサイト：<%= @user.website %></h3>
-      <%= link_to_if(current_user == @user, "プロフィール編集", edit_user_registration_path){} %>
-</div>
+    <div class="name">
+      <p>ニックネーム：<%= @user.pen_name %></p>
+    </div>
+    <div>
+      <%= render 'shared/stats' %>
+        <div class="col-md-4 follow-margin">
+          <%= render 'follow_form' if logged_in? %>
+        <%= link_to_if(current_user == @user, "プロフィール編集", edit_user_registration_path){} %>
+        </div>
+    </div>
+  <div class="profile-margin">
+    <h3>【自己紹介】<br> <%= @user.introduction %></h3>
+  </div>
+  <div class="web-margin">
+    <h4>【Webサイト】 <%= @user.website %></h4>
+  </div>
+        
+</section>

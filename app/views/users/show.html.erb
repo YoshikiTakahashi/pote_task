@@ -1,9 +1,8 @@
 <% provide(:title, @user.user_name) %>
   <%= render 'shared/user_info' %>
-
   <div class="col-md-8">
     <% if @user.photos.any? %>
-      <h3>Photos (<%= @user.photos.count %>)</h3>
+      <h3>投稿写真「<%= @user.photos.count %>件」</h3>
       <ol class="photos">
         <%= render @photos %>
       </ol>

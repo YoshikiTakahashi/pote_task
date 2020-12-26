@@ -1,16 +1,17 @@
 <% provide(:title, "投稿画像") %>
 
 <div class="row">
-  <div class="user-about flex">
-      <div class="image-user">
-        <%= gravatar_for(@user) %>
-      </div>
-      <div class="name">
-        <p>ユーザーネーム<%= @user.user_name %></p><br>
-        <p>ニックネーム<%= @user.pen_name %></p>
-      </div>
+  <aside class="col-2 col-md-3">
+    <%= link_to gravatar_for(@user, size: 120) %>
+  </aside>
+    <div class="name">
+      <p>フルネーム：<%= @user.user_name %></p>
     </div>
-  <div class="photos center">
+    <div class="name">
+      <p>ニックネーム：<%= @user.pen_name %></p>
+    </div>
+   
+  <div class="center photo-margin">
     <%= render @photo %>
   </div>
 </div>

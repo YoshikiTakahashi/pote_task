@@ -1,0 +1,26 @@
+  <% provide(:title, 'パスワード変更')%>
+  <div class="center jumbotron">
+    <h1>パスワード変更</h1>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+         <%= form_for current_user, url: {action: 'pass_update'} do |f| %>
+
+    <div class="field">
+      <%= f.label :password, "新しいパスワード" %> <i>(空欄の場合は，変更しません。)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "新しいパスワード再確認" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "パスワード編集完了", class:"btn btn-primary" %>
+    </div>
+    <br />
+    <%= link_to_if(current_user == @user, "プロフィール編集", edit_user_registration_path){} %>
+    <% end %>
+    </div>
+  </div>
+</div>

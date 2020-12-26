@@ -11,8 +11,6 @@ class PhotosController < ApplicationController
     following_photo = Photo.where("user_id IN (?)", current_user.following_ids)
     @feed_items = following_photo.paginate(page: params[:page])
     @feed_items = current_user.feed.paginate(page: params[:page])
-    # show_result = search_result ||= Photo.all
-    # @feed_items = show_result.paginate(page: params[:page])
   end
 
   def show
