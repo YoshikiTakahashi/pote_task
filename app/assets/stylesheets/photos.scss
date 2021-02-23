@@ -1,7 +1,3 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 .flame {
   border: 2px solid #000;
   width: 900px !important;
@@ -30,11 +26,9 @@
   font-size: 20px;
 }
 
-
 .inline{
   margin-top: 20px;
   margin-left: 20px;
-  
 }
 
 .image-user {
@@ -43,7 +37,6 @@
   height: 100px;
   width: 100px;
 }
-
 
 .container {
   padding: 30px;
@@ -71,7 +64,6 @@
 }
 
 .action-menu {
-  
   .like {
     background-color: sandybrown;
     width: 30px;
@@ -90,6 +82,7 @@
   margin-left: 20px;
   margin-bottom: 40px;
 }
+
 .block {
   display: block;
 }

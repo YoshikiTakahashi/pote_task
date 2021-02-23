@@ -1,21 +1,21 @@
 <div class="navbar navbar-fixed-top navbar-inverse header">
-    <div>
-    <%= link_to "Instagram", root_path, id: "logo" %>
+  <div>
+    <%= link_to "Instagram", root_path, id:"logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-        <li><%= link_to "検索フォーム", "#" %></li>
-        <li><%= link_to "通知", "#" %></li>
-        <li><%= link_to "Myページ", current_user %></li>
-        <li><%= link_to "投稿画像一覧", photos_path %></li>
-        <li><%= link_to "アップロード", new_photo_path %></li>
-        <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "検索フォーム", "#" %></li>
+          <li><%= link_to "通知", "#" %></li>
+          <li><%= link_to "Myページ", current_user %></li>
+          <li><%= link_to "投稿画像一覧", photos_path %></li>
+          <li><%= link_to "アップロード", new_photo_path %></li>
+          <li><%= link_to "Users", users_path %></li>
         <% else %>
-        <li><%= link_to "検索フォーム", "#" %></li>
-        <li><%= link_to "通知", "#" %></li>
-        <li><%= link_to "Myページ", new_user_session_path %></li>
-        <li><%= link_to "アップロード", new_user_session_path %></li>
-        <li><%= link_to "投稿画像一覧", new_user_session_path %></li>
+          <li><%= link_to "検索フォーム", "#" %></li>
+          <li><%= link_to "通知", "#" %></li>
+          <li><%= link_to "Myページ", new_user_session_path %></li>
+          <li><%= link_to "アップロード", new_user_session_path %></li>
+          <li><%= link_to "投稿画像一覧", new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>

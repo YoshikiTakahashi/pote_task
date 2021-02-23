@@ -8,13 +8,9 @@ class Photo < ApplicationRecord
                            message: "must be a valid image format" },
               size:        { less_than: 5.megabytes,
                            message: "should be less than 5MB" }
-                           
+
 # 表示用のリサイズ済み画像を返す
   def display_image
     image.variant(gravity: :center, resize:"750x750^", crop:"750x750+0+0").processed
-  end
-
-  private
-
-    
+  end  
 end

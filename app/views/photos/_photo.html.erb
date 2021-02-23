@@ -1,5 +1,4 @@
 <li id="photo-<%= photo.id %>">
-  
   <span class="title">
     <%= link_to "投稿者：#{photo.user.user_name}", user_path(photo.user) %><br>
     <%= link_to "タイトル：#{photo.title}", photo %><br>
@@ -13,7 +12,6 @@
   </span>
 </li>
 
-  <span class="picture center">
-    <%= image_tag photo.display_image if photo.image.attached? %>
-  </span>
-
+<span class="picture center">
+  <%= image_tag photo.display_image if photo.image.attached? %>
+</span>

@@ -1,5 +1,4 @@
 <% provide(:title, "投稿画像") %>
-
 <div class="row">
   <aside class="col-2 col-md-3">
     <%= link_to gravatar_for(@user, size: 120) %>
@@ -10,7 +9,6 @@
     <div class="name">
       <p>ニックネーム：<%= @user.pen_name %></p>
     </div>
-   
   <div class="center photo-margin">
     <%= render @photo %>
   </div>

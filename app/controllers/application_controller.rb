@@ -3,17 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :post_photo_prepare, if: :current_user
   protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :pen_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :pen_name, :website, :introduction, :tel, :sex])
+    update_attrs = [:password, :password_confirmation, :current_password]
+    devise_parameter_sanitizer.permit :account_update, keys: update_attrs
+  end
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :pen_name])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :pen_name, :website, :introduction, :tel, :sex])
-      update_attrs = [:password, :password_confirmation, :current_password]
-      devise_parameter_sanitizer.permit :account_update, keys: update_attrs
-    end
-
-    private
-    def post_photo_prepare
-      @photo = current_user.photos.build
-    end
-
+  private
+  def post_photo_prepare
+    @photo = current_user.photos.build
+  end
 end

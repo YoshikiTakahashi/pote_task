@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :user_name, presence: true, length: { in: 3..50}
   validates :pen_name, presence: true, length: { in: 3..50}
   validates :email, uniqueness: { case_sensitive: false }
-  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -35,7 +35,6 @@ class User < ApplicationRecord
     Photo.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
   end
-
 
   # ユーザーをフォローする
   def follow(other_user)
@@ -55,12 +54,12 @@ class User < ApplicationRecord
   # allow users to update their accounts without passwords
   def update_without_current_password(params, *options)
     params.delete(:current_password)
- 
+
     if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end
- 
+
     result = update_attributes(params, *options)
     clean_up_passwords
     result
